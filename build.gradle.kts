@@ -6,17 +6,13 @@ plugins {
     id("org.graalvm.buildtools.native") version "0.10.4"
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
 repositories {
     mavenCentral()
 }
 
 val springShellVersion: String by project
+val gradleWrapperVersion: String by project
+
 dependencyManagement {
     imports {
         mavenBom("org.springframework.shell:spring-shell-dependencies:$springShellVersion")
@@ -38,6 +34,16 @@ kotlin {
     }
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks.wrapper {
+    gradleVersion = gradleWrapperVersion
 }
