@@ -1,1 +1,1 @@
-rootProject.name = "argo-retry"
+rootProject.name = "argo-wrapper"
