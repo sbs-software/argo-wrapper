@@ -1,0 +1,15 @@
+spring:
+  application.name: argo-wrapper
+  main.banner-mode: OFF
+  shell:
+
+    interactive:
+      enabled: true
+logging:
+  pattern.console:
+  file.name: argo-wrapper.log
+  level:
+    com.soprabanking.dxp: INFO
+    org.jline: OFF
+    org.springframework: OFF
+    org.springframework.boot: OFF

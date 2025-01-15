@@ -1,10 +1,10 @@
-package com.soprabanking.dxp.argo.retry
+package com.soprabanking.dxp.argo.wrapper
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class ArgoRetryApplicationTests {
+class ArgoWrapperApplicationTests {
 
 	@Test
 	fun contextLoads() {
