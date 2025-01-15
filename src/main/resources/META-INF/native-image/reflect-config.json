@@ -1,0 +1,30 @@
+[
+  {
+    "name": "com.soprabanking.dxp.argo.wrapper.model.Workflow",
+    "allPublicConstructors": true,
+    "allPublicFields": true,
+    "allDeclaredFields": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "com.soprabanking.dxp.argo.wrapper.model.Workflow$Spec",
+    "allPublicConstructors": true,
+    "allPublicFields": true,
+    "allDeclaredFields": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "com.soprabanking.dxp.argo.wrapper.model.Workflow$Arguments",
+    "allPublicConstructors": true,
+    "allPublicFields": true,
+    "allDeclaredFields": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "com.soprabanking.dxp.argo.wrapper.model.Workflow$Parameter",
+    "allPublicConstructors": true,
+    "allPublicFields": true,
+    "allDeclaredFields": true,
+    "allPublicMethods": true
+  }
+]

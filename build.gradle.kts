@@ -22,6 +22,8 @@ dependencyManagement {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.shell:spring-shell-starter")
+    implementation("com.fasterxml.jackson.core:jackson-databind")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.springframework.shell:spring-shell-starter-test")
@@ -46,4 +48,12 @@ tasks.withType<Test> {
 
 tasks.wrapper {
     gradleVersion = gradleWrapperVersion
+}
+
+graalvmNative {
+    binaries {
+        named("main") {
+            imageName = "argow"
+        }
+    }
 }
