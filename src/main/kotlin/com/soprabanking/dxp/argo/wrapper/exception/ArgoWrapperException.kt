@@ -1,12 +1,17 @@
 package com.soprabanking.dxp.argo.wrapper.exception
 
-class ArgoClientException(
+class ArgoWrapperException(
     workflowId: String?,
     namespace: String?,
-    val command: List<String>,
-    val logs: List<String>,
+    command: List<String>,
+    logs: List<String>,
     cause: Throwable? = null,
-) : RuntimeException("Failed to run Argo command ${forWorkflow(workflowId)} ${inNamespace(namespace)}.", cause) {
+) : WrapperException(
+    "Failed to run Argo command ${forWorkflow(workflowId)} ${inNamespace(namespace)}.",
+    command,
+    logs,
+    cause
+) {
     companion object {
         private fun forWorkflow(workflowId: String?) = workflowId?.let { "for workflow $it" } ?: ""
         private fun inNamespace(namespace: String?) = namespace?.let { "in namespace $it" } ?: "in current namespace"

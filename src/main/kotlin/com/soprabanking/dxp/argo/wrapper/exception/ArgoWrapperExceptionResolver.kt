@@ -12,13 +12,13 @@ class ArgoWrapperExceptionResolver : CommandExceptionResolver {
 
     override fun resolve(e: Exception): CommandHandlingResult? {
         return when (e) {
-            is ArgoClientException -> e.logs + listOf(
+            is WrapperException -> e.logs + listOf(
                 "ERROR: ${e.message}",
                 " Command: ${e.command.joinToString(" ")}",
                 e.cause?.let { " Caused by (${it.javaClass.canonicalName}): ${it.localizedMessage}" } ?: ""
             )
 
-            is ArgoGetWorkflowException -> listOf(
+            is KubeConfigException, is ArgoGetWorkflowException -> listOf(
                 "ERROR: ${e.message}",
                 e.cause?.let { " Caused by (${it.javaClass.canonicalName}): ${it.localizedMessage}" } ?: ""
             )
@@ -26,7 +26,7 @@ class ArgoWrapperExceptionResolver : CommandExceptionResolver {
             else -> null
         }?.let { errorLogs ->
             errorLogs.forEach { logger.error(it) }
-            CommandHandlingResult.of(errorLogs.joinToString("\n"), 1)
+            CommandHandlingResult.of("${errorLogs.joinToString("\n")}\n", 1)
         }
     }
 }

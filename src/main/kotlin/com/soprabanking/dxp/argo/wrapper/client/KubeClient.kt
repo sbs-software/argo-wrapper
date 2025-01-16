@@ -4,9 +4,10 @@ import com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PRO
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT
 import com.fasterxml.jackson.module.kotlin.KotlinModule
-import com.soprabanking.dxp.argo.wrapper.exception.ArgoGetWorkflowException
-import com.soprabanking.dxp.argo.wrapper.exception.ArgoWrapperException
-import com.soprabanking.dxp.argo.wrapper.model.Workflow
+import com.soprabanking.dxp.argo.wrapper.exception.KubeConfigException
+import com.soprabanking.dxp.argo.wrapper.exception.KubeWrapperException
+import com.soprabanking.dxp.argo.wrapper.model.KubeConfig
+import com.soprabanking.dxp.argo.wrapper.model.KubeConfig.Context
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import java.io.BufferedReader
@@ -14,35 +15,30 @@ import java.io.InputStreamReader
 import java.lang.ProcessBuilder.Redirect.INHERIT
 
 @Component
-class ArgoClient {
+class KubeClient {
     private val jsonMapper = ObjectMapper().also {
         it.registerModule(KotlinModule.Builder().build())
         it.enable(INDENT_OUTPUT)
         it.configure(FAIL_ON_UNKNOWN_PROPERTIES, false)
     }
 
-    private val logger = LoggerFactory.getLogger(ArgoClient::class.java)
+    private val logger = LoggerFactory.getLogger(KubeClient::class.java)
 
-    fun get(workflowId: String, namespace: String?): Workflow {
+    fun context(): Context {
         val output = mutableListOf<String>()
-        run(workflowId, namespace, mutableListOf("get", workflowId, "-o", "json")) { output.add(it) }
+        run(mutableListOf("config", "view", "-o", "json", "--minify")) { output.add(it) }
         return runCatching {
-            jsonMapper.readValue(output.joinToString(""), Workflow::class.java)
+            jsonMapper.readValue(output.joinToString(""), KubeConfig::class.java).contexts.first()
         }.getOrElse {
-            throw ArgoGetWorkflowException(workflowId, namespace, it)
+            throw KubeConfigException(it)
         }
     }
 
     fun run(
-        workflowId: String?,
-        namespace: String?,
         args: List<String>,
         outputProcessor: ((String) -> Unit)? = null
     ) {
-        var command = mutableListOf("argo")
-        if (namespace != null) {
-            command += listOf("-n", namespace)
-        }
+        var command = mutableListOf("kubectl")
         command += args
         val output = mutableListOf<String>()
         try {
@@ -64,12 +60,12 @@ class ArgoClient {
                 }
             }
             if (process.waitFor() != 0) {
-                throw ArgoWrapperException(workflowId, namespace, command, output)
+                throw KubeWrapperException(command, output)
             }
-        } catch (e: ArgoWrapperException) {
+        } catch (e: KubeWrapperException) {
             throw e
         } catch (e: Exception) {
-            throw ArgoWrapperException(workflowId, namespace, command, output, e)
+            throw KubeWrapperException(command, output, e)
         } finally {
             output.forEach { logger.debug(it) }
         }
