@@ -15,7 +15,7 @@ class ListCommand(val argoClient: ArgoClient) {
     fun list(
         @Option(
             shortNames = ['n'], label = "string",
-            description = "Namespace of the workflow to retry"
+            description = "Namespace of the workflow to retry.\nDefaults to the namespace of current Kube context"
         ) namespace: String?,
     ) {
         argoClient.run(null, namespace, listOf("list"))

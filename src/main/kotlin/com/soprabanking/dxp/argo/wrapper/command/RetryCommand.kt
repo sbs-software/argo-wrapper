@@ -14,15 +14,15 @@ class RetryCommand(val argoClient: ArgoClient, val contextManager: ContextManage
     fun retry(
         @Option(
             longNames = ["id"], label = "string",
-            description = "Unique ID of the workflow to retry.\nDefaults to the workflow ID in context"
+            description = "Unique ID of the workflow to retry.\nDefaults to the workflow of Argo workflow context"
         ) id: String?,
         @Option(
             shortNames = ['n'], label = "string",
-            description = "Namespace of the workflow to retry.\nDefaults to the current namespace"
+            description = "Namespace of the workflow to retry.\nDefaults to the namespace of current Kube context"
         ) namespace: String?,
         @Option(
             shortNames = ['t'], label = "string",
-            description = "Name of the task to retry in a successful DAG workflow"
+            description = "Name (displayName) of the task to retry in a successful DAG workflow"
         ) target: String?,
         @Option(
             longNames = ["skip-dependencies", "skip"], shortNames = ['s'],
