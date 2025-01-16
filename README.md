@@ -1,6 +1,42 @@
-# argow: Wrapper for Argo workflows CLI
+# Wrapper for Argo workflows CLI
+
+Interactive shell to wrap Argo CLI commands.
 
 ## Overview
+
+### Installation
+
+Argo wrapper can be installed from [GitHub releases](https://github.com/fstaudt/argo-wrapper/releases).
+
+### Usage
+
+#### non-interactive mode
+
+```shell
+$ argow list
+NAME               STATUS      AGE   DURATION   PRIORITY   MESSAGE
+test-batch-4b5n7   Succeeded   18h   21s        0
+
+$ 
+```
+
+#### interactive mode
+
+```shell
+$ argow
+[cluster: -] [namespace: -] [workflow: -]
+argow:> init
+
+[cluster: test] [namespace: test] [workflow: -]
+argow:> list
+NAME               STATUS      AGE   DURATION   PRIORITY   MESSAGE
+test-batch-4b5n7   Succeeded   18h   21s        0
+
+[cluster: test] [namespace: test] [workflow: -]
+argow:> exit
+
+$ 
+```
 
 ### Argo Wrapper Commands
 
