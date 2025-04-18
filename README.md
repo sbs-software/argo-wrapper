@@ -27,12 +27,16 @@ $ argow
 [cluster: -] [namespace: -] [workflow: -]
 argow:> init
 
-[cluster: test] [namespace: test] [workflow: -]
+[cluster: test] [namespace: test-ns] [workflow: -]
 argow:> list
 NAME               STATUS      AGE   DURATION   PRIORITY   MESSAGE
 test-batch-4b5n7   Succeeded   18h   21s        0
 
-[cluster: test] [namespace: test] [workflow: -]
+[cluster: test] [namespace: test-ns] [workflow: -]
+argow:> get test-batch-4b5n7
+...
+
+[cluster: test] [namespace: test-ns] [workflow: test-batch-4b5n7]
 argow:> exit
 
 $ 
@@ -62,12 +66,12 @@ NAME
        get - Get an Argo workflow
 
 SYNOPSIS
-       get --id string --namespace string --help 
+       get [--id string] [--namespace string] [--help] 
 
 OPTIONS
        --id string
        Unique ID of the workflow to retry.
-       Defaults to the workflow of Argo workflow context
+       In interactive mode, defaults to the workflow of Argo wrapper context
        [Optional]
 
        --namespace or -n string
@@ -87,7 +91,7 @@ NAME
        list - List Argo workflows
 
 SYNOPSIS
-       list --namespace string --help 
+       list [--namespace string] [--help] 
 
 OPTIONS
        --namespace or -n string
@@ -107,12 +111,12 @@ NAME
        retry - Retry an Argo workflow
 
 SYNOPSIS
-       retry --id string --namespace string --target string --skip-dependencies boolean --parameter param1=value1 param2=value2 --watch boolean --help 
+       retry [--id string] [--namespace string] [--target string] [--skip-dependencies boolean] [--parameter param1=value1 param2=value2] [--watch boolean] [--help] 
 
 OPTIONS
        --id string
        Unique ID of the workflow to retry.
-       Defaults to the workflow of Argo workflow context
+       In interactive mode, defaults to the workflow of Argo wrapper context
        [Optional]
 
        --namespace or -n string
@@ -132,7 +136,7 @@ OPTIONS
        Input parameters added to the retried workflow
        [Optional]
 
-       --watch boolean
+       --watch or -w boolean
        Watch the workflow until it completes
        [Optional, default = false]
 
@@ -148,7 +152,7 @@ NAME
        context clear - Reset or initialize all parameters of Argo wrapper context
 
 SYNOPSIS
-       context clear --help 
+       context clear [--help]
 
 OPTIONS
        --help or -h 
@@ -167,7 +171,7 @@ NAME
        context set - Set parameter in Argo wrapper context
 
 SYNOPSIS
-       context set [--parameter namespace|workflow] [--value string] --help 
+       context set --parameter namespace|workflow --value string [--help]
 
 OPTIONS
        --parameter namespace|workflow
@@ -190,7 +194,7 @@ NAME
        context kube list - List kubernetes contexts
 
 SYNOPSIS
-       context kube list --help 
+       context kube list [--help]
 
 OPTIONS
        --help or -h 
@@ -205,7 +209,7 @@ NAME
        context kube set - Set kubernetes context
 
 SYNOPSIS
-       context kube set [--context context] --help 
+       context kube set --context context [--help]
 
 OPTIONS
        --context context

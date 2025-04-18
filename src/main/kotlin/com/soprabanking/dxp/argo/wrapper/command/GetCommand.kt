@@ -13,11 +13,11 @@ class GetCommand(val argoClient: ArgoClient, val contextManager: ContextManager)
     fun get(
         @Option(
             longNames = ["id"], label = "string",
-            description = "Unique ID of the workflow to retry.\nDefaults to the workflow of Argo workflow context"
+            description = "Unique ID of the workflow to retry.\nIn interactive mode, defaults to the workflow of Argo wrapper context"
         ) id: String?,
         @Option(
             shortNames = ['n'], label = "string",
-            description = "Namespace of the workflow to retry.\nDefaults to the namespace of current Kube context"
+            description = "Namespace of the workflow to retry.\nIn interactive mode, defaults to the namespace of current Kube context"
         ) namespace: String?,
     ) {
         if (id != null) contextManager.set(ContextParameter.workflow, id)
