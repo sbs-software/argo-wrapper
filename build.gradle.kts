@@ -41,6 +41,10 @@ java {
     }
 }
 
+springBoot {
+    buildInfo()
+}
+
 tasks.withType<Test> {
     useJUnitPlatform()
 }
