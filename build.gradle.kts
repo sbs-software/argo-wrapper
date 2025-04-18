@@ -3,7 +3,7 @@ plugins {
     kotlin("plugin.spring") version "1.9.25"
     id("org.springframework.boot") version "3.4.4"
     id("io.spring.dependency-management") version "1.1.7"
-    id("org.graalvm.buildtools.native") version "0.10.4"
+    id("org.graalvm.buildtools.native") version "0.10.6"
 }
 
 repositories {
