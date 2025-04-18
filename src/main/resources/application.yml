@@ -2,9 +2,12 @@ spring:
   application.name: argo-wrapper
   main.banner-mode: OFF
   shell:
-
     interactive:
       enabled: true
+    command:
+      version:
+        show-build-version: true
+        show-build-time: true
 logging:
   pattern.console:
   file.name: argo-wrapper.log
