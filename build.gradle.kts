@@ -10,12 +10,11 @@ repositories {
     mavenCentral()
 }
 
-val springShellVersion: String by project
 val gradleWrapperVersion: String by project
 
 dependencyManagement {
     imports {
-        mavenBom("org.springframework.shell:spring-shell-dependencies:$springShellVersion")
+        mavenBom("org.springframework.shell:spring-shell-dependencies:3.4.0")
     }
 }
 
