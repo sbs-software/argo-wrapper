@@ -14,7 +14,7 @@ class RetryCommand(val argoClient: ArgoClient, val contextManager: ContextManage
     fun retry(
         @Option(
             longNames = ["id"], label = "string",
-            description = "Unique ID of the workflow to retry.\nDefaults to the workflow of Argo workflow context"
+            description = "Unique ID of the workflow to retry.\nDefaults to the workflow of Argo wrapper context"
         ) id: String?,
         @Option(
             shortNames = ['n'], label = "string",
@@ -34,6 +34,7 @@ class RetryCommand(val argoClient: ArgoClient, val contextManager: ContextManage
             description = "Input parameters added to the retried workflow"
         ) parameters: List<String>?,
         @Option(
+            shortNames = ['w'],
             description = "Watch the workflow until it completes",
             defaultValue = "false"
         ) watch: Boolean,
