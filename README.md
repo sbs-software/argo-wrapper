@@ -6,7 +6,7 @@ Interactive shell to wrap Argo CLI commands.
 
 ### Installation
 
-Argo wrapper can be installed from [GitHub releases](https://github.com/fstaudt/argo-wrapper/releases).
+Argo wrapper can be installed from [GitHub releases](https://github.com/sbs-software/argo-wrapper/releases).
 
 ### Usage
 
