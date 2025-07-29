@@ -1,48 +1,48 @@
 [
   {
-    "name": "com.soprabanking.dxp.argo.wrapper.model.Workflow",
+    "name": "com.sbssoftware.argo.wrapper.model.Workflow",
     "allPublicConstructors": true,
     "allPublicFields": true,
     "allDeclaredFields": true,
     "allPublicMethods": true
   },
   {
-    "name": "com.soprabanking.dxp.argo.wrapper.model.Workflow$Spec",
+    "name": "com.sbssoftware.argo.wrapper.model.Workflow$Spec",
     "allPublicConstructors": true,
     "allPublicFields": true,
     "allDeclaredFields": true,
     "allPublicMethods": true
   },
   {
-    "name": "com.soprabanking.dxp.argo.wrapper.model.Workflow$Arguments",
+    "name": "com.sbssoftware.argo.wrapper.model.Workflow$Arguments",
     "allPublicConstructors": true,
     "allPublicFields": true,
     "allDeclaredFields": true,
     "allPublicMethods": true
   },
   {
-    "name": "com.soprabanking.dxp.argo.wrapper.model.Workflow$Parameter",
+    "name": "com.sbssoftware.argo.wrapper.model.Workflow$Parameter",
     "allPublicConstructors": true,
     "allPublicFields": true,
     "allDeclaredFields": true,
     "allPublicMethods": true
   },
   {
-    "name": "com.soprabanking.dxp.argo.wrapper.model.KubeConfig",
+    "name": "com.sbssoftware.argo.wrapper.model.KubeConfig",
     "allPublicConstructors": true,
     "allPublicFields": true,
     "allDeclaredFields": true,
     "allPublicMethods": true
   },
   {
-    "name": "com.soprabanking.dxp.argo.wrapper.model.KubeConfig$Context",
+    "name": "com.sbssoftware.argo.wrapper.model.KubeConfig$Context",
     "allPublicConstructors": true,
     "allPublicFields": true,
     "allDeclaredFields": true,
     "allPublicMethods": true
   },
   {
-    "name": "com.soprabanking.dxp.argo.wrapper.model.KubeConfig$ContextDetails",
+    "name": "com.sbssoftware.argo.wrapper.model.KubeConfig$ContextDetails",
     "allPublicConstructors": true,
     "allPublicFields": true,
     "allDeclaredFields": true,
