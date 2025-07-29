@@ -12,7 +12,7 @@ logging:
   pattern.console:
   file.name: argo-wrapper.log
   level:
-    com.soprabanking.dxp: INFO
+    com.sbssoftware: INFO
     org.jline: OFF
     org.springframework: OFF
     org.springframework.boot: OFF
